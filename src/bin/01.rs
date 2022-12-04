@@ -20,7 +20,23 @@ pub fn part_one(input: &str) -> Option<u32> {
 }
 
 pub fn part_two(input: &str) -> Option<u32> {
-    None
+    let elf_snacks = input.split("\n\n");
+    let mut elf_total_calories: Vec<u32> = Vec::new();
+    for snacks in elf_snacks {
+        let calories = snacks.split("\n");
+        let mut total = 0;
+        for calorie in calories {
+            match calorie.parse::<u32>() {
+                Ok(calorie) => {
+                    total += calorie;
+                }
+                Err(_) => {}
+            }
+        }
+        elf_total_calories.push(total);
+    }
+    elf_total_calories.sort_by(|a, b| b.cmp(a));
+    Some(elf_total_calories[0..3].iter().sum())
 }
 
 fn main() {
