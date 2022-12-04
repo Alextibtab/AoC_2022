@@ -1,5 +1,22 @@
 pub fn part_one(input: &str) -> Option<u32> {
-    None
+    let split = input.split("\n");
+    let mut max_calories: u32 = u32::MIN;
+    let mut current_calories: u32 = u32::MIN;
+
+    for number in split {
+        match number.parse::<u32>() {
+            Ok(number) => {
+                current_calories += number;
+            }
+            Err(_) => {
+                if current_calories > max_calories {
+                    max_calories = current_calories;
+                }
+                current_calories = u32::MIN;
+            }
+        }
+    }
+    Some(max_calories)
 }
 
 pub fn part_two(input: &str) -> Option<u32> {
