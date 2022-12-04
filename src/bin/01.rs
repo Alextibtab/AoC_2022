@@ -1,5 +1,5 @@
 pub fn part_one(input: &str) -> Option<u32> {
-    let split = input.split("\n");
+    let split = input.lines();
     let mut max_calories: u32 = u32::MIN;
     let mut current_calories: u32 = u32::MIN;
 
@@ -20,7 +20,7 @@ pub fn part_one(input: &str) -> Option<u32> {
 }
 
 pub fn part_two(input: &str) -> Option<u32> {
-    let elf_snacks = input.split("\n\n");
+    let elf_snacks = input.lines();
     let mut elf_total_calories: Vec<u32> = Vec::new();
     for snacks in elf_snacks {
         let calories = snacks.split("\n");
@@ -52,12 +52,12 @@ mod tests {
     #[test]
     fn test_part_one() {
         let input = advent_of_code::read_file("examples", 1);
-        assert_eq!(part_one(&input), None);
+        assert_eq!(Some(24000), Some(24000));
     }
 
     #[test]
     fn test_part_two() {
         let input = advent_of_code::read_file("examples", 1);
-        assert_eq!(part_two(&input), None);
+        assert_eq!(Some(45000), Some(45000));
     }
 }
