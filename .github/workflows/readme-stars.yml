@@ -9,6 +9,7 @@ on:
 jobs:
     update-readme:
         runs-on: ubuntu-latest
+        environment: AoC_Tracker
         steps:
             - uses: actions/checkout@v3
               if: ${{ env.AOC_ENABLED }}
